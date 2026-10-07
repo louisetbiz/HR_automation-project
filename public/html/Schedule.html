@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Schedule</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+<div class="header">
+  <a href="#default" class="logo">CompanyLogo</a>
+  <div class="header-right">
+    <a href="../main_page.html">Home</a>
+    <a href="New_Employee.html">New Employee</a>
+    <a class="active" href="Schedule.html">Schedule</a>
+    <a href="Vacation_request.html">Vacation Request</a>
+    <a href="VacationApproval.html">Vacation Approval</a>
+    <a href="MedicalAbsence.html">Medical Absence</a>
+</div>
+</div>
+
+
+
+    <div class="schedule-container">
+
+        <div class="schedule-header">
+            <button id="prevMonth">&lt;</button>
+
+            <h1 id="monthTitle"></h1>
+
+            <button id="nextMonth">&gt;</button>
+        </div>
+
+        <div class="calendar">
+
+            <div class="weekday">MON</div>
+            <div class="weekday">TUE</div>
+            <div class="weekday">WED</div>
+            <div class="weekday">THU</div>
+            <div class="weekday">FRI</div>
+            <div class="weekday">SAT</div>
+            <div class="weekday">SUN</div>
+
+            <div id="calendarDays" class="calendar-days"></div>
+
+        </div>
+
+    </div>
+
+
+    <!-- EDIT DAY MODAL -->
+
+    <div id="scheduleModal" class="modal">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h2 id="modalDate"></h2>
+
+                <button id="closeModal">&times;</button>
+            </div>
+
+            <div id="employeeAssignments"></div>
+
+            <button id="saveSchedule" class="save-button">
+                Save
+            </button>
+
+        </div>
+
+    </div>
+
+
+<script src="../js/Schedule.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,502 @@
+.form_container {
+    width: 90%;
+    max-width: 500px;
+    margin: 50px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.form_container h1 {
+    margin-top: 0;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.form_container form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+label {display: block;}
+
+input[type=text],[type=date],[type=email],[type=tel], select {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: #4b34a8;
+  color: white;
+  padding: 14px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #5745a0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f5f7;
+    color: #222;
+}
+
+.schedule-container {
+    width: 95%;
+    max-width: 1400px;
+    margin: 30px auto;
+}
+
+
+/* HEADER */
+
+.schedule-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 20px;
+}
+
+.schedule-header h1 {
+    margin: 0;
+    min-width: 260px;
+    text-align: center;
+}
+
+.schedule-header button {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 6px;
+    background: #333;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.schedule-header button:hover {
+    background: #555;
+}
+
+
+/* CALENDAR */
+
+.calendar {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+
+/* WEEKDAYS */
+
+.weekday {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 12px 5px;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+
+/* DAYS */
+
+.calendar-days {
+    grid-column: 1 / -1;
+
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.day {
+    min-height: 145px;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding: 7px;
+
+    cursor: pointer;
+
+    background: white;
+}
+
+.day:hover {
+    background: #f8f9fa;
+}
+
+.day.empty {
+    background: #f0f1f2;
+    cursor: default;
+}
+
+
+/* DATE NUMBER */
+
+.date-number {
+    font-weight: bold;
+    font-size: 15px;
+    margin-bottom: 8px;
+}
+
+
+/* EMPLOYEE ASSIGNMENT */
+
+.assignment {
+    font-size: 12px;
+    padding: 4px 5px;
+    margin-bottom: 4px;
+
+    background: #e9edf2;
+    border-radius: 4px;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+
+/* MODAL */
+
+.modal {
+    display: none;
+
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.45);
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+}
+
+.modal.show {
+    display: flex;
+}
+
+
+.modal-content {
+    width: 100%;
+    max-width: 600px;
+
+    background: white;
+    border-radius: 10px;
+
+    padding: 25px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 20px;
+}
+
+.modal-header h2 {
+    margin: 0;
+}
+
+.modal-header button {
+    border: none;
+    background: none;
+
+    font-size: 28px;
+    cursor: pointer;
+}
+
+
+/* EMPLOYEE ROW */
+
+.employee-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 12px 0;
+
+    border-bottom: 1px solid #eee;
+}
+
+.employee-name {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.employee-name span {
+    font-size: 12px;
+    color: #777;
+}
+
+.employee-row select {
+    width: 160px;
+
+    padding: 8px;
+
+    border: 1px solid #ccc;
+    border-radius: 5px;
+
+    background: white;
+}
+
+
+/* SAVE */
+
+.save-button {
+    width: 100%;
+
+    margin-top: 20px;
+
+    padding: 12px;
+
+    border: none;
+    border-radius: 6px;
+
+    background: #333;
+    color: white;
+
+    font-size: 15px;
+
+    cursor: pointer;
+}
+
+.save-button:hover {
+    background: #555;
+}
+
+
+/* SMALLER SCREENS */
+
+@media (max-width: 900px) {
+
+    .day {
+        min-height: 120px;
+        padding: 5px;
+    }
+
+    .assignment {
+        font-size: 10px;
+    }
+
+    .weekday {
+        font-size: 11px;
+    }
+}
+
+.assignment.kitchen {
+    background: #fff3b0;
+}
+
+.assignment.waiter {
+    background: #ffd6a5;
+}
+
+.assignment.off {
+    background: #f1f1f1;
+    color: #777;
+}
+
+
+
+/* VACATION FORM */
+
+
+.vacation-container {
+    width: 90%;
+    max-width: 500px;
+    margin: 50px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.vacation-container h1 {
+    margin-top: 0;
+    margin-bottom: 25px;
+}
+
+.vacation-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.vacation-container label {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.vacation-container select,
+.vacation-container input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.vacation-container button {
+    margin-top: 20px;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    background: #333;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.vacation-container button:hover {
+    background: #555;
+}
+
+/* Vacation approvals */
+
+.vacation-request {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 10px;
+    background: #f8f9fa;
+}
+
+.vacation-request strong {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+.vacation-request div {
+    margin-top: 5px;
+    font-size: 14px;
+}
+.vacation-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.vacation-actions button {
+    padding: 8px 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+}
+
+.approve-button {
+    background: #4caf50;
+}
+
+.approve-button:hover {
+    background: #388e3c;
+}
+
+.reject-button {
+    background: #d9534f;
+}
+
+.reject-button:hover {
+    background: #c9302c;
+}
+
+.assignment.absence {
+    background: #d9d9d9;
+    color: #555;
+}
+
+/* HEADER */
+* {box-sizing: border-box;}
+
+body { 
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.header {
+  overflow: hidden;
+  background-color: #f1f1f1;
+  padding: 20px 10px;
+}
+
+.header a {
+  float: left;
+  color: black;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px; 
+  line-height: 25px;
+  border-radius: 4px;
+}
+
+.header a.logo {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.header a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.header a.active {
+  background-color: rgb(104, 44, 234);
+  color: white;
+}
+
+.header-right {
+  float: right;
+}
+
+@media screen and (max-width: 500px) {
+  .header a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  
+  .header-right {
+    float: none;
+  }
+}

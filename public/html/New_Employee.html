@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+    
+    <title>New Employee</title>
+</head>
+<body>
+	
+<div class="header">
+  <a href="#default" class="logo">CompanyLogo</a>
+  <div class="header-right">
+    <a href="../main_page.html">Home</a>
+    <a class="active" href="New_Employee.html">New Employee</a>
+    <a href="Schedule.html">Schedule</a>
+    <a href="Vacation_request.html">Vacation Request</a>
+    <a href="VacationApproval.html">Vacation Approval</a>
+    <a href="MedicalAbsence.html">Medical Absence</a>
+</div>
+</div>
+
+
+
+    <div class="form_container">
+
+        <h1>Employee Data Input</h1>
+        
+
+	<form id="employeeForm">
+
+    <label for="name">Name: </label>
+    <input type="text" placeholder="First name" name="first_name" id="first_name" required /><br>
+    <label for="name">Last name: </label>
+    <input type="text" placeholder="Last name" name="last_name" id="last_name" required /><br>
+    <label for="name">Birth date: </label>
+    <input type="date" placeholder="" name="birth_date" id="birth_date" required /><br>
+    <label for="name">Nationality: </label>
+    <input type="text" placeholder="Nationality" name="nationality" id="nationality" required /><br>
+    <label for="email">Email: </label>
+    <input type="email" placeholder="Email" name="email" id="email" required /><br>
+    <label for="ss_num">Social Security: </label>
+    <input type="text" placeholder="Social Security Number" name="ss_num" id="ss_num" required /><br>
+    <label for="name">Phone: </label>
+    <input type="tel" placeholder="Phone" name="Phone" id="Phone" required /><br>
+    <label for="name">IBAN: </label>
+    <input type="text" placeholder="ES" name="IBAN" id="IBAN" required /><br>
+    <label for="name">Contract Hours: </label>
+    <input type="text" placeholder="35" name="contract_hours" id="contract_hours" required /><br>
+    <label for="name">Initial Date: </label>
+    <input type="date" placeholder="" name="initial_date" id="initial_date" required /><br>
+    <label for="name">Sector: </label>
+        <select id="sector" name="sector">
+            <option value="Kitchen">Kitchen</option>
+            <option value="Waiter">Waiter</option>
+        </select><br>
+    
+
+    <input type="submit" value="Enter" /><br>
+    </form>
+</div>
+
+<script src="../js/NewEmployee.js"></script>
+</body>
+</html>
+    

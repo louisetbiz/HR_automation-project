@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Absence</title>
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<div class="header">
+  <a href="#default" class="logo">CompanyLogo</a>
+  <div class="header-right">
+    <a href="../main_page.html">Home</a>
+    <a href="New_Employee.html">New Employee</a>
+    <a href="Schedule.html">Schedule</a>
+    <a href="Vacation_request.html">Vacation Request</a>
+    <a href="VacationApproval.html">Vacation Approval</a>
+    <a class="active" href="MedicalAbsence.html">Medical Absence</a>
+  </div>
+</div>
+
+<div class="vacation-container">
+    <form id="medicalAbsenceForm">
+
+    <label for="employee">Employee</label>
+    <select id="employee" required>
+        <option value="">Select Employee</option>
+    </select>
+    <label for="startDate"> Start Date </label>
+    <input type="date" id="startDate" required>
+    <label for="endDate"> End Date </label>
+    <input type="date" id="endDate" required>
+
+    <button type="submit"> Submit Medical Absence </button>
+
+    </form>
+</div>
+<script src="../js/MedicalAbsence.js"></script>
+</body>
+</html>
