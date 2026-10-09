@@ -51,12 +51,20 @@ def home():
 
 @app.get("/test-db")
 def test_database():
+    names = ["DB_HOST", "DB_PORT", "DB_USER", "DB_PASSWORD", "DB_NAME"]
+    status = {name: bool(os.getenv(name)) for name in names}
     try:
-        connection = get_connection()
+        connection = mysql.connector.connect(
+            host=os.getenv("DB_HOST"),
+            port=int(os.getenv("DB_PORT", 3306)),
+            user=os.getenv("DB_USER"),
+            password=os.getenv("DB_PASSWORD"),
+            database=os.getenv("DB_NAME")
+        )
         connection.close()
-        return {"message": "MySQL connection works!"}
+        return {"message": "MySQL connection works!", "variables": status}
     except Exception as e:
-        return {"error": str(e)}
+        return {"error": str(e), "variables": status}
     
 #@app.get("/test-db")
 #def test_database():
