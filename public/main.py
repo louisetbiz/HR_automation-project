@@ -9,14 +9,6 @@ load_dotenv()
 
 app = FastAPI()
 
-def get_connection():
-    return mysql.connector.connect(
-        host=os.getenv("DB_HOST"),
-        port=int(os.getenv("DB_PORT", 3306)),
-        user=os.getenv("DB_USER"),
-        password=os.getenv("DB_PASSWORD"),
-        database=os.getenv("DB_NAME")
-    )
 
 app.add_middleware(
     CORSMiddleware,
@@ -49,35 +41,19 @@ class Employee(BaseModel):
 def home():
     return {"message": "HR Project API is working!"}
 
+
 @app.get("/test-db")
 def test_database():
-    names = ["DB_HOST", "DB_PORT", "DB_USER", "DB_PASSWORD", "DB_NAME"]
-    status = {name: bool(os.getenv(name)) for name in names}
-    try:
-        connection = mysql.connector.connect(
-            host=os.getenv("DB_HOST"),
-            port=int(os.getenv("DB_PORT", 3306)),
-            user=os.getenv("DB_USER"),
-            password=os.getenv("DB_PASSWORD"),
-            database=os.getenv("DB_NAME")
-        )
-        connection.close()
-        return {"message": "MySQL connection works!", "variables": status}
-    except Exception as e:
-        return {"error": str(e), "variables": status}
-    
-#@app.get("/test-db")
-#def test_database():
- #   connection = mysql.connector.connect(
-  #      host=os.getenv("DB_HOST"),
-  #      user=os.getenv("DB_USER"),
-  #      password=os.getenv("DB_PASSWORD"),
-   #     database=os.getenv("DB_NAME")
-   # )
+    connection = mysql.connector.connect(
+        host=os.getenv("DB_HOST"),
+       user=os.getenv("DB_USER"),
+        password=os.getenv("DB_PASSWORD"),
+        database=os.getenv("DB_NAME")
+    )
 
-  #  connection.close()
+    connection.close()
 
-  #  return {"message": "MySQL connection works!"}
+    return {"message": "MySQL connection works!"}
 
 
 @app.post("/api/employee_data")
