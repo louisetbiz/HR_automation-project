@@ -3,7 +3,7 @@ async function loadVacationRequests() {
     try {
 
         const response = await fetch(
-            "http://127.0.0.1:8000/api/vacation_requests"
+            `${API_URL}/api/vacation_requests`
         );
 
         if (!response.ok) {
@@ -110,7 +110,7 @@ async function updateRequest(requestId, status) {
     try {
 
         const response = await fetch(
-            `http://127.0.0.1:8000/api/vacation_requests/${requestId}`,
+            `${API_URL}api/vacation_requests/${requestId}`,
             {
                 method: "PUT",
 
@@ -206,7 +206,7 @@ async function updateVacationDates(
     try {
 
         const response = await fetch(
-            `http://127.0.0.1:8000/api/vacation_requests/${requestId}`,
+            `${API_URL}/api/vacation_requests/${requestId}`,
             {
                 method: "PUT",
 

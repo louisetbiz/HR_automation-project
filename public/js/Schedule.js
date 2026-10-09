@@ -15,7 +15,7 @@ async function loadEmployees() {
     try {
 
         const response = await fetch(
-            "http://127.0.0.1:8000/api/schedule_employees"
+            `${API_URL}/api/schedule_employees`
         );
 
         if (!response.ok) {
@@ -42,7 +42,7 @@ async function loadShifts() {
     try {
 
         const response = await fetch(
-            "http://127.0.0.1:8000/api/shift_types"
+            `${API_URL}api/shift_types`
         );
 
         if (!response.ok) {
@@ -61,7 +61,7 @@ async function loadShifts() {
 
 async function loadSchedule() {
     try {
-        const response = await fetch("http://127.0.0.1:8000/api/employee_schedule");
+        const response = await fetch(`${API_URL}/api/employee_schedule`);
 
         if (!response.ok) {
             throw new Error("Could not load schedule");
@@ -460,7 +460,7 @@ document
 
             const response =
                 await fetch(
-                    "http://127.0.0.1:8000/api/employee_schedule",
+                    `${API_URL}/api/employee_schedule`,
                     {
                         method: "POST",
 
@@ -577,7 +577,7 @@ async function loadAbsences() {
     try {
 
         const response = await fetch(
-            "http://127.0.0.1:8000/api/employee_absences"
+            `${API_URL}/api/employee_absences`
         );
 
         if (!response.ok) {

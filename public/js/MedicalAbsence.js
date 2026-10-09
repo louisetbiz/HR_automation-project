@@ -3,7 +3,7 @@ async function loadEmployees() {
     try {
 
         const response = await fetch(
-            "http://127.0.0.1:8000/api/schedule_employees"
+            `${API_URL}/api/schedule_employees`
         );
 
         if (!response.ok) {
@@ -69,7 +69,7 @@ document
 
             const response =
                 await fetch(
-                    "http://127.0.0.1:8000/api/medical_absences",
+                    `${API_URL}/api/medical_absences`,
                     {
                         method: "POST",
 

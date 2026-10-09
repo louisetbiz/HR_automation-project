@@ -21,7 +21,7 @@ const form = document.getElementById("employeeForm");
 
         try {
             const response = await fetch(
-                "http://127.0.0.1:8000/api/employee_data",
+                `${API_URL}api/employee_data`,
                 {
                     method: "POST",
                     headers: {
