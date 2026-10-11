@@ -42,7 +42,7 @@ async function loadShifts() {
     try {
 
         const response = await fetch(
-            `${API_URL}api/shift_types`
+            `${API_URL}/api/shift_types`
         );
 
         if (!response.ok) {
