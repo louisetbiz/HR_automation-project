@@ -29,7 +29,7 @@ app.add_middleware(
         "http://localhost:5500",
         "https://louisetbiz.github.io"
     ],
-    allow_credentials=True,
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
