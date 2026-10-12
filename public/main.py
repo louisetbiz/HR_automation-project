@@ -9,6 +9,18 @@ load_dotenv()
 
 app = FastAPI()
 
+CA_PATH = os.path.join(os.path.dirname(__file__), "ca.pem")
+
+
+def get_connection():
+    return mysql.connector.connect(
+        host=os.getenv("DB_HOST"),
+        port=int(os.getenv("DB_PORT", "3306")),
+        user=os.getenv("DB_USER"),
+        password=os.getenv("DB_PASSWORD"),
+        database=os.getenv("DB_NAME"),
+        ssl_ca=CA_PATH,
+    )
 
 app.add_middleware(
     CORSMiddleware,
@@ -44,12 +56,7 @@ def home():
 
 @app.get("/test-db")
 def test_database():
-    connection = mysql.connector.connect(
-        host=os.getenv("DB_HOST"),
-       user=os.getenv("DB_USER"),
-        password=os.getenv("DB_PASSWORD"),
-        database=os.getenv("DB_NAME")
-    )
+    connection = get_connection()
 
     connection.close()
 
@@ -58,12 +65,7 @@ def test_database():
 
 @app.post("/api/employee_data")
 def create_employee(employee_data: Employee):
-    connection = mysql.connector.connect(
-        host=os.getenv("DB_HOST"),
-        user=os.getenv("DB_USER"),
-        password=os.getenv("DB_PASSWORD"),
-        database=os.getenv("DB_NAME")
-    )
+    connection = get_connection()
 
     cursor = connection.cursor()
 
@@ -114,12 +116,7 @@ def create_employee(employee_data: Employee):
 
 @app.get("/api/employee_data")
 def get_employees():
-    connection = mysql.connector.connect(
-        host=os.getenv("DB_HOST"),
-        user=os.getenv("DB_USER"),
-        password=os.getenv("DB_PASSWORD"),
-        database=os.getenv("DB_NAME")
-    )
+    connection = get_connection()
 
     cursor = connection.cursor(dictionary=True)
 
@@ -134,12 +131,7 @@ def get_employees():
 
 @app.get("/api/schedule_employees")
 def get_schedule_employees():
-    connection = mysql.connector.connect(
-        host=os.getenv("DB_HOST"),
-        user=os.getenv("DB_USER"),
-        password=os.getenv("DB_PASSWORD"),
-        database=os.getenv("DB_NAME")
-    )
+    connection = get_connection()
 
     cursor = connection.cursor(dictionary=True)
 
@@ -171,12 +163,7 @@ def get_schedule_employees():
 
 @app.get("/api/shift_types")
 def get_shift_types():
-    connection = mysql.connector.connect(
-        host=os.getenv("DB_HOST"),
-        user=os.getenv("DB_USER"),
-        password=os.getenv("DB_PASSWORD"),
-        database=os.getenv("DB_NAME")
-    )
+    connection = get_connection()
 
     cursor = connection.cursor(dictionary=True)
 
@@ -200,12 +187,7 @@ def get_shift_types():
 
 @app.get("/api/employee_schedule")
 def get_employee_schedule():
-    connection = mysql.connector.connect(
-        host=os.getenv("DB_HOST"),
-        user=os.getenv("DB_USER"),
-        password=os.getenv("DB_PASSWORD"),
-        database=os.getenv("DB_NAME")
-    )
+    connection = get_connection()
 
     cursor = connection.cursor(dictionary=True)
 
@@ -245,12 +227,7 @@ def get_employee_schedule():
 
 @app.post("/api/employee_schedule")
 def save_employee_schedule(data: dict):
-    connection = mysql.connector.connect(
-        host=os.getenv("DB_HOST"),
-        user=os.getenv("DB_USER"),
-        password=os.getenv("DB_PASSWORD"),
-        database=os.getenv("DB_NAME")
-    )
+    connection = get_connection()
 
     cursor = connection.cursor()
 
@@ -313,12 +290,7 @@ def save_employee_schedule(data: dict):
 @app.post("/api/vacation_requests")
 def create_vacation_request(data: dict):
 
-    connection = mysql.connector.connect(
-        host=os.getenv("DB_HOST"),
-        user=os.getenv("DB_USER"),
-        password=os.getenv("DB_PASSWORD"),
-        database=os.getenv("DB_NAME")
-    )
+    connection = get_connection()
 
     cursor = connection.cursor()
 
@@ -388,12 +360,7 @@ def create_vacation_request(data: dict):
 @app.get("/api/vacation_requests")
 def get_vacation_requests():
 
-    connection = mysql.connector.connect(
-        host=os.getenv("DB_HOST"),
-        user=os.getenv("DB_USER"),
-        password=os.getenv("DB_PASSWORD"),
-        database=os.getenv("DB_NAME")
-    )
+    connection = get_connection()
 
     cursor = connection.cursor(dictionary=True)
 
@@ -443,13 +410,7 @@ def get_vacation_requests():
 @app.put("/api/vacation_requests/{request_id}")
 def update_vacation_request(request_id: int, data: dict):
 
-    connection = mysql.connector.connect(
-        host=os.getenv("DB_HOST"),
-        user=os.getenv("DB_USER"),
-        password=os.getenv("DB_PASSWORD"),
-        database=os.getenv("DB_NAME")
-    )
-
+    connection = get_connection()
     cursor = connection.cursor(dictionary=True)
 
     try:
@@ -600,12 +561,7 @@ def update_vacation_request(request_id: int, data: dict):
 @app.get("/api/employee_absences")
 def get_employee_absences():
 
-    connection = mysql.connector.connect(
-        host=os.getenv("DB_HOST"),
-        user=os.getenv("DB_USER"),
-        password=os.getenv("DB_PASSWORD"),
-        database=os.getenv("DB_NAME")
-    )
+    connection = get_connection()
 
     cursor = connection.cursor(dictionary=True)
 
@@ -650,12 +606,7 @@ def get_employee_absences():
 @app.post("/api/medical_absences")
 def create_medical_absence(data: dict):
 
-    connection = mysql.connector.connect(
-        host=os.getenv("DB_HOST"),
-        user=os.getenv("DB_USER"),
-        password=os.getenv("DB_PASSWORD"),
-        database=os.getenv("DB_NAME")
-    )
+    connection = get_connection()
 
     cursor = connection.cursor()
 
